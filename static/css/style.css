@@ -1,0 +1,237 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+
+
+
+/*------------------------------------------------------------------------HEADER*/
+#head {
+    height: 350px;
+    width: 100%;
+    background: url("../images/table.webp") no-repeat center 80%/cover;
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  #cover-text {
+   font-size: 300%;
+   font-weight: 900;
+   position: absolute;
+   color: white;
+   font-family: "Roboto", sans-serif;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+  }
+
+  
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #F53E3F;
+      font-weight: 900;
+    }
+    .navbar-brand {
+      padding-left: 2px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    #chef {
+      padding-top: 2px;
+      padding-left: 2px;
+      width: 70px;
+      height: 70px;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    .nav-item, li:active {
+      background-color: #F29C9D;
+    }
+
+    /* Set black background color, white text and some padding for the footer */
+    footer {
+      background-color: #F53E3F;
+      color: white;
+      padding: 15px;
+    }
+    #social-networks {
+      text-align: center;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+    }
+    
+    #social-networks i {
+      font-size: 300%;
+      padding: 5%;
+      color: yellow;
+    }
+    /*
+    #info {position:absolute; top:75px; left:0px; display: block; text-align:center; background: #F0DFB4; border-width:thick thin thick 0; border-style: solid solid solid none; border-color: green; font:x-small Verdana, Ariel, Helvetica, sans-serif; margin:0; padding:5 5 5 5; margin-left:auto; margin-right:auto;}
+*/
+
+/*Styling the form*/
+.signup {
+    background-image: url("../images/tableset.webp");
+    background-size: cover;
+    background-position: 75%;
+    padding: 20px 10% 0 10%;
+    flex-grow: 1;
+}
+
+
+#signup-form {
+    color: #ffffff;
+    background-color: rgba(60, 60, 60, 0.6);
+    padding: 30px;
+}
+
+::placeholder {
+  color: white;
+}
+
+
+#signup-form>h2 {
+    color: #fafafa;
+    margin-bottom: 20px;
+}
+
+
+.text-input {
+    background: transparent;
+    color: #fafafa;
+    width: 100%;
+    height: 25px;
+    margin: 5px 0 20px 0;
+    border: 1px solid #fafafa;
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+    /*====================================================Styling the paragraphs*/
+    .text{
+      font-size: 30px;
+      color: #554f4f;
+      text-align: center;
+      font-family: 'Roboto' sans-serif;
+      font-weight: 900;
+    }
+    .text_thin{
+      font-size: 30px;
+      color: #554f4f;
+      text-align: center;
+      font-family: 'Exo' sans-serif;
+      font-weight: 500;
+
+    }
+    .text-footer{
+      color:#fafafa;
+      font-size: 15px;
+      text-align: center;
+      font-family: 'Roboto' sans-serif;
+      font-weight: 300;
+    }
+
+
+    /*========================================================Styling the form*/
+#signup {
+  background-image: url("../images/tableset.webp");
+    background-size: cover;
+    background-position: 75%;
+    padding: 20px 10% 0 10%;
+    flex-grow: 1;
+}
+
+
+#signup-form {
+    color: #ffffff;
+    background-color: rgba(60, 60, 60, 0.6);
+    padding: 30px;
+}
+
+
+#signup-form>h2 {
+    color: #fafafa;
+    margin-bottom: 20px;
+}
+
+
+.text-input {
+    background: transparent;
+    color: #fafafa;
+    width: 100%;
+    height: 25px;
+    margin: 5px 0 20px 0;
+    border: 1px solid #fafafa;
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+.join-button {
+    margin-top: 20px;
+    border-radius: 2px;
+    padding: 15px 32px;
+    font-size: 100%;
+    background-color: #F53E3F;
+    color: #fafafa;
+}
+.text-input:hover {
+  border-color: #f16c6b;
+}
+
+.join-button:hover {
+  background-color: #fafafa;
+  color: #454b1b;
+}
+.textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #fafafa;
+  border-radius: 4px;
+  /*background-color: #f8f8f8;*/
+  background-color: rgba(60, 60, 60, 0.6);
+  font-size: 16px;
+  resize: none;
+  background: transparent;
+}
+
+.textarea:hover {
+  border-color: #f16c6b;
+}
+
+iframe {
+  width: 780px;
+  height: 300px;
+}
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    @media screen and (max-width: 767px) {
+      iframe {
+        height: auto;
+        width: 300px;
+      }
+    }
+
+
+  
