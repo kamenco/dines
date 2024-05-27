@@ -55,7 +55,7 @@
       background-color: #f1f1f1;
       height: 100%;
     }
-    .nav-item, li:active {
+    .nav-item, li:pink {
       background-color: #F29C9D;
     }
 
