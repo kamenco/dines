@@ -7,8 +7,8 @@ app = Flask(__name__)
 def index():
     return render_template("index.html", page_title="Home")
 
-@app.route("/about")
-def about():
+@app.route("/menu")
+def menu():
     return render_template("menu.html", page_title="Menu")
 
 @app.route("/contact")
