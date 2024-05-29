@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text">{{ page_title }}</h1>
+
 {% for recepie in list %}
     <div class="col-sm-8 text-left"> 
+      <h1 class="text">{{ page_title }}</h1>
       <h3 class="text">{{ recepie.name }}</h3>
       <p class="text_thin">{{ recepie.description }}<br></p>
       <hr>
