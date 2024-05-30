@@ -2,17 +2,16 @@
 
 {% block content %}
 
-<h1>{{ name }}</h1>
-    <p>{{ description }}</p>
+
     <!--<img src="{{ image-source }}" alt="Image of {{ name }}">-->
-<!--
+
     <div>
       {% for recepie in list %}
       <img src="{{ recepie.image-source }}" alt="Image of {{ name }}">
       <h3>{{ recepie.name }}</h3>
       <p>{{ recepie.description }}</p>
       {% endfor %}
-    </div>-->
+    </div>
     
 
 {% endblock %}
