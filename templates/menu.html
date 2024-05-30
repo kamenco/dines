@@ -5,7 +5,7 @@
 
     <div>
       {% for recepie in list %}
-      <p>{{ recepie.image-source }}</p>
+      <img src="{{ recepie.image-source }}" alt="Image of {{ name }}">
       <h3>{{ recepie.name }}</h3>
       <p>{{ recepie.description }}</p>
       {% endfor %}
