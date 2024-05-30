@@ -2,11 +2,11 @@
  {
   "name": "Peppers with stuffing",
   "description": "Chop the onions and the carrots and fry in the oil. Add the rice and the minced meat. Stir for five minutes, add the salt, savory, black and red ground pepper, put water and cook till the rice softens.Fill the peppers with the stuffing, put them on a tray with water and bake for 40 minutes at 180 C. For the sauce - mix the eggs, the yougout and the flour. Add the left water from the already baked peppers and cook in a pan till the mixture is reduced.Serve the peppers topped with the sauce.",
-  "image-source": "piperki.jpg"  
+  "image-source": "static/images/piperki.jpg"  
  },
  {
   "name": "SHOPSKA SALAD",
   "description": "Cut the onion on thin crescents press it a bit and add salt. Bake the peppers, strip the skin and cut on stripes. Mix the salat and season with olive oil and vinegar. Put crushed white cheeseon top a the olives.",
-  "image-source": "shopska.png"  
+  "image-source": "static/images/shopska.png"
  }
 ]
