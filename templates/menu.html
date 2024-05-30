@@ -4,14 +4,15 @@
 
 
     <!--<img src="{{ image-source }}" alt="Image of {{ name }}">-->
-
+    {% for recepie in list %}
     <div>
-      {% for recepie in list %}
+      
       
       <h3>{{ recepie.name }}</h3>
       <p>{{ recepie.description }}</p>
-      {% endfor %}
+      
     </div>
+    {% endfor %}
     
 
 {% endblock %}
