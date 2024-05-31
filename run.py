@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -11,8 +11,13 @@ def index():
 @app.route("/menu")
 def menu():
     data = []
-    with open ("data/list.json", "r") as json_data:
-        data =json.load(json_data)
+    with open("data/list.json", "r") as json_data:
+        data = json.load(json_data)
+    
+    category = request.args.get('category')
+    if category:
+        data = [item for item in data if item['category'] == category]
+    
     return render_template("menu.html", page_title="Menu", list=data)
 
 @app.route("/contact")
