@@ -2,21 +2,25 @@
  {
   "name": "Peppers with stuffing",
   "description": "Chop the onions and the carrots and fry in the oil. Add the rice and the minced meat. Stir for five minutes, add the salt, savory, black and red ground pepper, put water and cook till the rice softens.Fill the peppers with the stuffing, put them on a tray with water and bake for 40 minutes at 180 C. For the sauce - mix the eggs, the yougout and the flour. Add the left water from the already baked peppers and cook in a pan till the mixture is reduced.Serve the peppers topped with the sauce.",
-  "image": "https://www.bgtown.com/images/piperki.jpg"
+  "image": "https://www.bgtown.com/images/piperki.jpg",
+  "category": "main_course"
  },
  {
   "name": "SHOPSKA SALAD",
   "description": "Cut the onion on thin crescents press it a bit and add salt. Bake the peppers, strip the skin and cut on stripes. Mix the salat and season with olive oil and vinegar. Put crushed white cheeseon top a the olives.",
-  "image": "static/images/shopska.png"
+  "image": "static/images/shopska.png",
+  "category": "salad"
  },
  {
    "name": "Cold Cucumber Soup",
    "description": "Cut the cucumber in cubes,mix it with the chopped dill,add the chopped garlic and the walnuts mix well and season with salt and olive oil. Dilute the yorgout with the water and mix with the rest. Some people prefer it without the walnuts.",
-   "image": "https://www.bgtown.com/images/tarator.jpg"
+   "image": "https://www.bgtown.com/images/tarator.jpg",
+   "category": "soup"
  },
  {
     "name": "Pumpkin Pie",
     "description": "Sift the flouron a plate add salt vinegar, olive oil and the tepid water. Blend to make medium soft dough. Devide into 4 parts, rub with olive oil and rest it for 30 min.Sautee the pumpkins with butter, leave it to get cold, add the sinammon and mix. Roll out the dough thin like e newspaper's sheet, put the pumpkins and the walnutsce add sugar and wrap in the form of a snail. Put some olive oil on it and bake it in the oven for 45 min om 180 C",
-    "image": "https://www.bgtown.com/images/tikvenik.jpg"
+    "image": "https://www.bgtown.com/images/tikvenik.jpg",
+    "category": "dessert"
  }
 ]
