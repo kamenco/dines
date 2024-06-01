@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
 USERNAME = 'owner'
-PASSWORD = 'password'
+PASSWORD = 'pR_%6$?s'
 
 @app.route("/")
 def index():
