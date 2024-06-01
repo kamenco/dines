@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>{{ page_title }}</h2>
+    <form method="post" action="{{ url_for('update_menu') }}">
+        <h3>Add New Recipe</h3>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" class="form-control" id="image" name="image">
+        </div>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select class="form-control" id="category" name="category">
+                <option value="main_course">Main Course</option>
+                <option value="salad">Salad</option>
+                <option value="soup">Soup</option>
+                <option value="dessert">Dessert</option>
+            </select>
+        </div>
+        <button type="submit" name="add" class="btn btn-default">Add Recipe</button>
+    </form>
+    <hr>
+    <form method="post" action="{{ url_for('update_menu') }}">
+        <h3>Delete Recipe</h3>
+        <div class="form-group">
+            <label for="recipe_name">Recipe Name:</label>
+            <select class="form-control" id="recipe_name" name="recipe_name">
+                {% for item in list %}
+                    <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" name="delete" class="btn btn-default">Delete Recipe</button>
+    </form>
+</div>
+{% endblock %}
