@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Upcoming Tasks</h2>
+    <a href="{{ url_for('add_task') }}">Add Task</a>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.task_name }} - {{ task.due_date }} - {{ task.is_urgent }}
+                <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
+                <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
