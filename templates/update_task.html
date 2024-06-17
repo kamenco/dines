@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Update Task</h2>
+    <form method="post">
+        <label for="task_name">Task Name</label>
+        <input type="text" name="task_name" id="task_name" value="{{ task.task_name }}" required>
+
+        <label for="task_description">Task Description</label>
+        <textarea name="task_description" id="task_description" required>{{ task.task_description }}</textarea>
+
+        <label for="is_urgent">Is Urgent</label>
+        <input type="checkbox" name="is_urgent" id="is_urgent" {% if task.is_urgent %}checked{% endif %}>
+
+        <label for="due_date">Due Date</label>
+        <input type="date" name="due_date" id="due_date" value="{{ task.due_date }}" required>
+
+        <label for="category_id">Category</label>
+        <select name="category_id" id="category_id" required>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == task.category_id %}selected{% endif %}>
+                    {{ category.category_name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Update Task</button>
+    </form>
+{% endblock %}

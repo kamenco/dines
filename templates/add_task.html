@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Add Task</h2>
+    <form method="post">
+        <label for="task_name">Task Name</label>
+        <input type="text" name="task_name" id="task_name" required>
+
+        <label for="task_description">Task Description</label>
+        <textarea name="task_description" id="task_description" required></textarea>
+
+        <label for="is_urgent">Is Urgent</label>
+        <input type="checkbox" name="is_urgent" id="is_urgent">
+
+        <label for="due_date">Due Date</label>
+        <input type="date" name="due_date" id="due_date" required>
+
+        <label for="category_id">Category</label>
+        <select name="category_id" id="category_id" required>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.category_name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Add Task</button>
+    </form>
+{% endblock %}
