@@ -1,84 +1,111 @@
 import os
 import json
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, url_for, session, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
 
+# Initialize the Flask app
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-USERNAME = 'owner'
-PASSWORD = 'pR_%6$?s'
+# Configuration
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "supersecretkey")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL", "sqlite:///taskmanager.db")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+# Initialize the database
+db = SQLAlchemy(app)
+
+# Define constants
+USERNAME = 'owner'
+PASSWORD = 'password'
+
+# Define database models
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    category_name = db.Column(db.String(25), unique=True, nullable=False)
+    tasks = db.relationship("Task", backref="category", cascade="all, delete", lazy=True)
+
+    def __repr__(self):
+        return self.category_name
+
+
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task_name = db.Column(db.String(50), unique=True, nullable=False)
+    task_description = db.Column(db.Text, nullable=False)
+    is_urgent = db.Column(db.Boolean, default=False, nullable=False)
+    due_date = db.Column(db.Date, nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)
+
+    def __repr__(self):
+        return "#{0} - Task: {1} | Urgent: {2}".format(self.id, self.task_name, self.is_urgent)
+
+# Define routes for the existing site
 @app.route("/")
-def index():
-    return render_template("index.html", page_title="Home")
+def home():
+    return render_template("base.html")
 
 @app.route("/menu")
 def menu():
-    data = []
-    with open("data/list.json", "r") as json_data:
-        data = json.load(json_data)
-    
-    category = request.args.get('category')
-    if category:
-        data = [item for item in data if item['category'] == category]
-    
-    return render_template("menu.html", page_title="Menu", list=data)
+    return render_template("menu.html")
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html", page_title="Contact")
+    return render_template("contact.html")
 
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        if request.form['username'] == USERNAME and request.form['password'] == PASSWORD:
-            session['logged_in'] = True
-            flash('You were logged in', 'success')
-            return redirect(url_for('index'))
-        else:
-            flash('Invalid Credentials', 'danger')
-    return render_template("login.html", page_title="Login")
+# Define routes for the task manager
+@app.route("/tasks")
+def tasks():
+    tasks = Task.query.all()
+    categories = Category.query.all()
+    return render_template("tasks.html", tasks=tasks, categories=categories)
 
-@app.route("/logout")
-def logout():
-    session.pop('logged_in', None)
-    flash('You were logged out', 'success')
-    return redirect(url_for('index'))
+@app.route("/add_task", methods=["GET", "POST"])
+def add_task():
+    if request.method == "POST":
+        task_name = request.form.get("task_name")
+        task_description = request.form.get("task_description")
+        is_urgent = True if request.form.get("is_urgent") else False
+        due_date = request.form.get("due_date")
+        category_id = request.form.get("category_id")
 
-@app.route("/update_menu", methods=['GET', 'POST'])
-def update_menu():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    
-    data = []
-    with open("data/list.json", "r") as json_data:
-        data = json.load(json_data)
-    
-    if request.method == 'POST':
-        if 'add' in request.form:
-            new_recipe = {
-                "name": request.form['name'],
-                "description": request.form['description'],
-                "image": request.form['image'],
-                "category": request.form['category']
-            }
-            data.append(new_recipe)
-            with open("data/list.json", "w") as json_data:
-                json.dump(data, json_data, indent=4)
-            flash('Recipe added', 'success')
-        elif 'delete' in request.form:
-            recipe_name = request.form['recipe_name']
-            data = [item for item in data if item['name'] != recipe_name]
-            with open("data/list.json", "w") as json_data:
-                json.dump(data, json_data, indent=4)
-            flash('Recipe deleted', 'success')
-        return redirect(url_for('update_menu'))
-    
-    return render_template("update_menu.html", page_title="Update Menu", list=data)
+        new_task = Task(task_name=task_name, task_description=task_description,
+                        is_urgent=is_urgent, due_date=due_date, category_id=category_id)
 
+        db.session.add(new_task)
+        db.session.commit()
+        return redirect(url_for("tasks"))
+
+    categories = Category.query.all()
+    return render_template("add_task.html", categories=categories)
+
+@app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
+def update_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if request.method == "POST":
+        task.task_name = request.form.get("task_name")
+        task.task_description = request.form.get("task_description")
+        task.is_urgent = True if request.form.get("is_urgent") else False
+        task.due_date = request.form.get("due_date")
+        task.category_id = request.form.get("category_id")
+
+        db.session.commit()
+        return redirect(url_for("tasks"))
+
+    categories = Category.query.all()
+    return render_template("update_task.html", task=task, categories=categories)
+
+@app.route("/delete_task/<int:task_id>")
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for("tasks"))
+
+# Initialize the database
+with app.app_context():
+    db.create_all()
+
+# Run the app
 if __name__ == "__main__":
-    app.run(
-        host=os.environ.get("IP", "0.0.0.0"),
-        port=int(os.environ.get("PORT", "5000")),
-        debug=True
-    )
+    app.run(host=os.environ.get("IP", "0.0.0.0"), port=int(os.environ.get("PORT", "5000")), debug=os.environ.get("DEBUG", "True") == "True")

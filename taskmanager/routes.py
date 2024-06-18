@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
-from your_app import app, db
-from your_app.models import Category, Task
+from taskmanager import app, db
+from taskmanager.models import Category, Task
 
 @app.route("/")
 def home():
@@ -42,7 +42,7 @@ def add_task():
 @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
-    if request.method == "POST"):
+    if request.method == "POST":
         task.task_name = request.form.get("task_name")
         task.task_description = request.form.get("task_description")
         task.is_urgent = True if request.form.get("is_urgent") else False
