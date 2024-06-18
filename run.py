@@ -53,6 +53,27 @@ def menu():
 def contact():
     return render_template("contact.html")
 
+# Define routes for login logout
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if username == USERNAME and password == PASSWORD:
+            session["logged_in"] = True
+            flash("You are now logged in.", "success")
+            return redirect(url_for("home"))
+        else:
+            flash("Invalid credentials. Please try again.", "danger")
+    return render_template("login.html", page_title="Login")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("logged_in", None)
+    flash("You are now logged out.", "success")
+    return redirect(url_for("home"))
+
 # Define routes for the task manager
 @app.route("/tasks")
 def tasks():
