@@ -82,7 +82,7 @@ def add_task():
 @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
-    if request.method == "POST"):
+    if request.method == "POST":
         task.task_name = request.form.get("task_name")
         task.task_description = request.form.get("task_description")
         task.is_urgent = True if request.form.get("is_urgent") else False
