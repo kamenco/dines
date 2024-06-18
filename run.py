@@ -3,8 +3,8 @@ import json
 from flask import Flask, render_template, request, url_for, session, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 
-# Initialize the Flask app
-app = Flask(__name__)
+# Initialize the Flask app with template folder configuration
+app = Flask(__name__, template_folder='taskmanager/templates')
 app.secret_key = 'supersecretkey'
 
 # Configuration
@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 
 # Define constants
 USERNAME = 'owner'
-PASSWORD = 'password'
+PASSWORD = 'pR_%6$?s'
 
 # Define database models
 class Category(db.Model):
