@@ -2,27 +2,32 @@
 
 {% block content %}
 <div class="col-sm-8 text-left">
-<div>
-    <h1>{{ page_title }}</h1>
-    <form method="get" action="{{ url_for('menu') }}">
-        <label for="category">Select food:</label>
-        <select name="category" id="category">
-            <option value="">All food</option>
-            <option value="main_course">Main Courses</option>
-            <option value="salad">Salads</option>
-            <option value="dessert">Desserts</option>
-            <option value="soup">Soups</option>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
-</div>
+    <div>
+        <h1>{{ page_title }}</h1>
+        <form method="get" action="{{ url_for('menu') }}">
+            <label for="category">Select food:</label>
+            <select name="category" id="category">
+                <option value="">All food</option>
+                <option value="main_course">Main Courses</option>
+                <option value="salad">Salads</option>
+                <option value="dessert">Desserts</option>
+                <option value="soup">Soups</option>
+            </select>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
 
-<div>
-    {% for recipe in list %}
-        <img src="{{ recipe.image }}" alt="Image of {{ recipe.name }}">
-        <h3>{{ recipe.name }}</h3>
-        <p>{{ recipe.description }}</p>
-    {% endfor %}
-</div>
+    <div>
+        {% for recipe in list %}
+            <div class="recipe-item">
+                <img src="{{ recipe.image }}" alt="Image of {{ recipe.name }}" class="img-fluid">
+                <h3>{{ recipe.name }}</h3>
+                <p>{{ recipe.description }}</p>
+            </div>
+        {% endfor %}
+        {% if not list %}
+            <p>No recipes found.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
