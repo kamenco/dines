@@ -47,7 +47,17 @@ def home():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    with open('taskmanager/static/data/list.json') as f:
+        recipes = json.load(f)
+
+    # Filter recipes based on category if a category is selected
+    category = request.args.get('category', '')
+    if category:
+        recipes = [recipe for recipe in recipes if recipe['category'] == category]
+
+    page_title = "Menu"
+    return render_template("menu.html", list=recipes, page_title=page_title)
+
 
 @app.route("/contact")
 def contact():
