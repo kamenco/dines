@@ -22,5 +22,29 @@
     "description": "Sift the flouron a plate add salt vinegar, olive oil and the tepid water. Blend to make medium soft dough. Devide into 4 parts, rub with olive oil and rest it for 30 min.Sautee the pumpkins with butter, leave it to get cold, add the sinammon and mix. Roll out the dough thin like e newspaper's sheet, put the pumpkins and the walnutsce add sugar and wrap in the form of a snail. Put some olive oil on it and bake it in the oven for 45 min om 180 C",
     "image": "https://www.bgtown.com/images/tikvenik.jpg",
     "category": "dessert"
- }
+ },
+ {
+  "name": "Sarmi",
+  "description": "Cooking: Chop the onions and fry. Put the rice, stir and put the red pepper, add half teacup warm water and salt. After ten minites take it off, add the meat the black pepper and salt. Unfold the cabbage leaves and put the mixture inside. Wrap the leaves and put the pieces in a cooking pan, cover with warm water and cook till ready.",
+  "image": "https://www.bgtown.com/images/sarmi.png",
+  "category": "main_course"
+},
+{
+  "name": "Carp with walnuts",
+  "description": "Cooking:Chop thre onions the walnuts, the mushrooms one tomato and fry for 5 minutes in olive oil. Add half spoon black pepper. In the meantime wash the carp, salt it and rub it with olive oil. Chop one onion, heath half tea cupolive oil add the onion plus the rice. Cook for three minutes and put the rest of the chopped tomats. Fill the carp with the stuffing and close the belly with toothpicks. In a plate put the rice, add half teaspoon salt, allspice, bay leaf, put the fish on the rice and cook in preheated oven on 170 C for 75 min.",
+  "image": "https://www.bgtown.com/images/sharan.png",
+  "category": "main_course"
+},
+{
+  "name": "White cheese in earthenware jug",
+  "description": "Chop the tomato and place it on the bottom of the jug with 2 soup spoons butter. Sprinkle with savory, put the white cheese and the chili pepper. Bake in oven for 10 min 170C. Put the egg on topand black pepper and bake in the oven 180C for another5-20 min.",
+  "image": "https://www.bgtown.com/images/guivech.jpg",
+  "category": "main_course"
+},
+{
+  "name": "Wine kebap with veal",
+  "description": "Cut the meat into cubes, salt the meat and rub with ground black pepper, add two soup spoons olive oil. Leave the meat for one hour. Fry the onion, add the meatsalt and ground black pepper the white wine and stir. Pour the mashed tomatoes, the bay leaves with sugar and pimento. Pour hot water to cover the meat Fry the butter with the flourand cook for 5 minutes to thicken the sauce. Seerve with whiteboiled rice.",
+  "image": "https://www.bgtown.com/images/vin_kebap.jpg",
+  "category": "main_course"
+}
 ]
