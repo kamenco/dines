@@ -1,10 +1,10 @@
 import os
 import json
-from flask import Flask, render_template, request, url_for, session, flash, redirect
+from flask import Flask, render_template, template_folder, request, url_for, session, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 # Initialize the Flask app with template folder configuration
-app = Flask(__name__, template_folder='taskmanager/templates')
+app = Flask(__name__, static_folder='taskmanager/static', template_folder='taskmanager/templates')
 app.secret_key = 'supersecretkey'
 
 # Configuration
