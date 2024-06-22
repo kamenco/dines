@@ -72,7 +72,7 @@ def login():
         if username == USERNAME and password == PASSWORD:
             session["logged_in"] = True
             flash("You are now logged in.", "success")
-            return redirect(url_for("home"))
+            return redirect(url_for("update_menu"))
         else:
             flash("Invalid credentials. Please try again.", "danger")
     return render_template("login.html", page_title="Login")
