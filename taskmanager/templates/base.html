@@ -43,10 +43,12 @@
           {% if session.get('logged_in') %}
             <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <li><a href="{{ url_for('update_menu') }}"><span class="glyphicon glyphicon-pencil"></span> Update Menu</a></li>
+            <li><a href="{{ url_for('tasks') }}"><span class="glyphicon glyphicon-tasks"></span> Tasks</a></li>
           {% else %}
             <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           {% endif %}
         </ul>
+        
       </div>
     </div>
   </nav>
