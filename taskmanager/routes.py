@@ -14,6 +14,29 @@ def menu():
 def contact():
     return render_template("contact.html")
 
+# Define route for update_menu
+
+@app.route("/update_menu", methods=["GET", "POST"])
+def update_menu():
+    if not session.get('logged_in'):
+        flash("You need to be logged in to access this page.", "danger")
+        return redirect(url_for('login'))
+
+    # Handle form submissions for adding or deleting recipes
+    if request.method == "POST":
+        if 'add' in request.form:
+            # Add new recipe logic here
+            pass
+        elif 'delete' in request.form:
+            # Delete recipe logic here
+            pass
+
+    with open('taskmanager/static/data/list.json') as f:
+        recipes = json.load(f)
+    
+    return render_template("update_menu.html", list=recipes, page_title="Update Menu")
+
+
 @app.route("/tasks")
 def tasks():
     tasks = Task.query.all()
