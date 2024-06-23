@@ -1,32 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-sm-8 text-left">
-    <div>
+<div class="container mt-5">
+    <div class="text-left mb-4">
         <h1>{{ page_title }}</h1>
-        <form method="get" action="{{ url_for('menu') }}">
-            <label for="category">Select food:</label>
-            <select name="category" id="category">
+        <form method="get" action="{{ url_for('menu') }}" class="form-inline">
+            <label for="category" class="mr-2">Select food:</label>
+            <select name="category" id="category" class="form-control mr-2">
                 <option value="">All food</option>
                 <option value="main_course">Main Courses</option>
                 <option value="salad">Salads</option>
                 <option value="dessert">Desserts</option>
                 <option value="soup">Soups</option>
             </select>
-            <button type="submit">Filter</button>
+            <button type="submit" class="btn btn-primary">Filter</button>
         </form>
     </div>
 
-    <div>
+    <div class="row">
         {% for recipe in list %}
-            <div class="recipe-item">
-                <img src="{{ recipe.image }}" alt="Image of {{ recipe.name }}" class="img-fluid">
-                <h3>{{ recipe.name }}</h3>
-                <p>{{ recipe.description }}</p>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ recipe.image }}" alt="Image of {{ recipe.name }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ recipe.name }}</h3>
+                        <p class="card-text">{{ recipe.description }}</p>
+                    </div>
+                </div>
             </div>
         {% endfor %}
         {% if not list %}
-            <p>No recipes found.</p>
+            <p class="col-12">No recipes found.</p>
         {% endif %}
     </div>
 </div>
