@@ -43,7 +43,7 @@ class Task(db.Model):
 # Define routes for the existing site
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html", page_title="Welcome to Varna Eats")
 
 @app.route("/menu")
 def menu():
