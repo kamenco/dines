@@ -59,6 +59,10 @@
       background-color: #F29C9D;
     }
 
+    /* Set the background for contact page */
+   #cont_backg {
+    background: url("../images/tableset.webp") no-repeat center 80%/cover;
+   }
     /* Set black background color, white text and some padding for the footer */
     footer {
       background-color: #F53E3F;
