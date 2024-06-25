@@ -2,6 +2,11 @@ import os
 import json
 from flask import Flask, render_template, request, url_for, session, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
+from form_handler import configure_mail, handle_form_submission
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize the Flask app with template folder configuration
 app = Flask(__name__, static_folder='taskmanager/static', template_folder='taskmanager/templates')
@@ -14,6 +19,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize the database
 db = SQLAlchemy(app)
+
+# Configure the mail
+mail = configure_mail(app)
 
 # Define constants
 USERNAME = 'owner'
@@ -59,8 +67,12 @@ def menu():
     return render_template("menu.html", list=recipes, page_title=page_title)
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        handle_form_submission(mail)
+        return redirect(url_for("contact"))
+
     return render_template("contact.html")
 
 # Define routes for login logout
