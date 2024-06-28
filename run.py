@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, url_for, session, flash, redi
 from flask_sqlalchemy import SQLAlchemy
 from form_handler import configure_mail, handle_form_submission
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -132,7 +133,15 @@ def add_task():
         task_name = request.form.get("task_name")
         task_description = request.form.get("task_description")
         is_urgent = True if request.form.get("is_urgent") else False
-        due_date = request.form.get("due_date")
+        due_date_str = request.form.get("due_date")
+        
+        # Convert due_date from string to date object
+        try:
+            due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+        except ValueError:
+            flash("Invalid date format. Please use YYYY-MM-DD.", "danger")
+            return redirect(url_for("add_task"))
+
         category_id = request.form.get("category_id")
 
         new_task = Task(task_name=task_name, task_description=task_description,
@@ -152,7 +161,15 @@ def update_task(task_id):
         task.task_name = request.form.get("task_name")
         task.task_description = request.form.get("task_description")
         task.is_urgent = True if request.form.get("is_urgent") else False
-        task.due_date = request.form.get("due_date")
+        due_date_str = request.form.get("due_date")
+
+        # Convert due_date from string to date object
+        try:
+            task.due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+        except ValueError:
+            flash("Invalid date format. Please use YYYY-MM-DD.", "danger")
+            return redirect(url_for("update_task", task_id=task_id))
+
         task.category_id = request.form.get("category_id")
 
         db.session.commit()
@@ -168,9 +185,19 @@ def delete_task(task_id):
     db.session.commit()
     return redirect(url_for("tasks"))
 
-# Initialize the database
+# Initialize the database and add initial categories if none exist
 with app.app_context():
-    db.create_all()
+    db.create_all()  # Ensure all tables are created
+    # Check if any categories exist
+    if not Category.query.first():
+        # Add initial categories
+        initial_categories = ["Work", "Personal", "Hobby"]
+        for category_name in initial_categories:
+            db.session.add(Category(category_name=category_name))
+        db.session.commit()
+        print("Added initial categories")
+    else:
+        print("Categories already exist")
 
 # Run the app
 if __name__ == "__main__":
