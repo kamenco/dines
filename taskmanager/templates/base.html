@@ -48,11 +48,11 @@
             <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           {% endif %}
         </ul>
-        
       </div>
     </div>
   </nav>
-  <div class="container-fluid text-center">    
+
+  <div class="container-fluid text-center">
     <div class="row content">
       <div class="col-sm-2 sidenav">
         <div id="info">
@@ -67,8 +67,26 @@
           <a href="#">Web site</a><br />
         </div>
       </div>
-      {% block content %}
-      {% endblock %}    
+
+      <div class="col-sm-8 text-left">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+      </div>
+
       <div class="col-sm-2 sidenav">
         <div class="well">
           <p>ADS</p>
@@ -79,6 +97,7 @@
       </div>
     </div>
   </div>
+
   <footer class="container-fluid text-center">
     <ul id="social-networks">
       <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Visit our Facebook page (opens in a new tab)"><i class="fa fa-facebook-square"></i></a></li>

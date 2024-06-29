@@ -5,7 +5,7 @@
     <ul>
         {% for task in tasks %}
             <li>
-                {{ task.task_name }} - {{ task.due_date }} - {{ task.is_urgent }}
+                <strong>{{ task.task_name }}</strong> - {{ task.task_description }} - {{ task.due_date }} - {{ task.is_urgent }} - {{ task.category.category_name }}
                 <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
                 <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
             </li>

@@ -134,7 +134,13 @@ def add_task():
         task_description = request.form.get("task_description")
         is_urgent = True if request.form.get("is_urgent") else False
         due_date_str = request.form.get("due_date")
-        
+
+        # Check if a task with the same name already exists
+        existing_task = Task.query.filter_by(task_name=task_name).first()
+        if existing_task:
+            flash("A task with that name already exists. Please choose a different name.", "danger")
+            return redirect(url_for("add_task"))
+
         # Convert due_date from string to date object
         try:
             due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
