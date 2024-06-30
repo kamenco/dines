@@ -39,6 +39,14 @@
       padding-bottom: 2px;
     }
 
+    /* Add this to your existing CSS file */
+
+.navbar-nav > .active > a {
+  background-color: #f16c6b !important;
+  color: white !important;
+}
+
+
     #chef {
       padding-top: 2px;
       padding-left: 2px;
