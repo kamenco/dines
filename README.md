@@ -1,10 +1,13 @@
 # Varna Eats
 
+
+[Click on this link to visit the site on Heroku](https://dines-kamen-9b44aac7c04a.herokuapp.com/)
+
 Varna Eats is a web application that allows users to view the menu, make reservations, and manage tasks. This project is built using Flask and is deployed on Heroku.
 
 ## Features
 
-- View the menu with various recipes.
+- View the menu with various recepies.
 - Make reservations through a contact form.
 - Login and manage the menu (add or delete recipes).
 - Task management functionality including adding, updating, and deleting tasks.
@@ -15,7 +18,7 @@ Varna Eats is a web application that allows users to view the menu, make reserva
 |-- form_handler.py
 |-- env.py
 |-- requirements.txt
-|-- taskmanager/
+|-- taskmanager/ 
 | |-- init.py
 | |-- templates/
 | | |-- base.html
@@ -61,3 +64,22 @@ Initialize the database
 flask db init
 flask db migrate -m "Initial migration."
 flask db upgrade
+
+
+
+# Bug fixes
+
+Check if task with the same name already exists. If it exists the program crashes. 
+
+
+![The integrity error!](taskmanager/static/images/unique_name_error.png "The integrity error")
+
+
+
+The bug was solved with adding the code check if a task with the same name already exists
+        
+        
+        existing_task = Task.query.filter_by(task_name=task_name).first()
+        if existing_task:
+            flash("A task with that name already exists. Please choose a different name.", "danger")
+            return redirect(url_for("add_task"))
