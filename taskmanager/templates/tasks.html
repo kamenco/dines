@@ -7,8 +7,30 @@
             <li>
                 <strong>{{ task.task_name }}</strong> - {{ task.task_description }} - {{ task.due_date }} - {{ task.is_urgent }} - {{ task.category.category_name }}
                 <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
-                <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+                <a href="#" onclick="confirmDelete({{ task.id }})">Delete</a>
             </li>
         {% endfor %}
     </ul>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" style="display:none;">
+        <p>Do you really want to delete this task?</p>
+        <button id="confirmYes">Yes</button>
+        <button id="confirmNo">No</button>
+    </div>
+
+    <script>
+        function confirmDelete(taskId) {
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'block';
+
+            document.getElementById('confirmYes').onclick = function() {
+                window.location.href = "{{ url_for('delete_task', task_id=0) }}".replace('0', taskId);
+            };
+
+            document.getElementById('confirmNo').onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+    </script>
 {% endblock %}

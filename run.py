@@ -121,44 +121,82 @@ def update_menu():
 
 
 # Define routes for the task manager
+
 @app.route("/tasks")
 def tasks():
-    tasks = Task.query.all()
-    categories = Category.query.all()
-    return render_template("tasks.html", tasks=tasks, categories=categories)
+    try:
+        tasks = Task.query.all()
+        categories = Category.query.all()
+
+        # Debugging prints
+        print(f"Tasks: {tasks}")
+        print(f"Categories: {categories}")
+
+        return render_template("tasks.html", tasks=tasks, categories=categories)
+    except Exception as e:
+        # Log the exception and flash an error message
+        print(f"Error: {e}")
+        flash("An error occurred while loading tasks.", "danger")
+        return redirect(url_for("home"))
+
 
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
-    if request.method == "POST":
-        task_name = request.form.get("task_name")
-        task_description = request.form.get("task_description")
-        is_urgent = True if request.form.get("is_urgent") else False
-        due_date_str = request.form.get("due_date")
+    try:
+        if request.method == "POST":
+            task_name = request.form.get("task_name")
+            task_description = request.form.get("task_description")
+            is_urgent = True if request.form.get("is_urgent") else False
+            due_date_str = request.form.get("due_date")
+            category_id = request.form.get("category_id")
 
-        # Check if a task with the same name already exists
-        existing_task = Task.query.filter_by(task_name=task_name).first()
-        if existing_task:
-            flash("A task with that name already exists. Please choose a different name.", "danger")
-            return redirect(url_for("add_task"))
+            # Debug logging
+            print(f"Form Data: task_name={task_name}, task_description={task_description}, is_urgent={is_urgent}, due_date={due_date_str}, category_id={category_id}")
 
-        # Convert due_date from string to date object
-        try:
-            due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
-        except ValueError:
-            flash("Invalid date format. Please use YYYY-MM-DD.", "danger")
-            return redirect(url_for("add_task"))
+            # Check if a task with the same name already exists
+            existing_task = Task.query.filter_by(task_name=task_name).first()
+            if existing_task:
+                flash("A task with that name already exists. Please choose a different name.", "danger")
+                return redirect(url_for("add_task"))
 
-        category_id = request.form.get("category_id")
+            # Convert due_date from string to date object
+            try:
+                due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+            except ValueError as ve:
+                print(f"Date Conversion Error: {ve}")
+                flash("Invalid date format. Please use YYYY-MM-DD.", "danger")
+                return redirect(url_for("add_task"))
 
-        new_task = Task(task_name=task_name, task_description=task_description,
-                        is_urgent=is_urgent, due_date=due_date, category_id=category_id)
+            new_task = Task(task_name=task_name, task_description=task_description,
+                            is_urgent=is_urgent, due_date=due_date, category_id=category_id)
 
-        db.session.add(new_task)
-        db.session.commit()
+            db.session.add(new_task)
+            db.session.commit()
+            flash("Task added successfully.", "success")
+            return redirect(url_for("tasks"))
+
+        categories = Category.query.all()
+        return render_template("add_task.html", categories=categories)
+    except Exception as e:
+        # Log the exception and flash an error message
+        print(f"Error in add_task route: {e}")
+        flash("An error occurred while adding the task.", "danger")
         return redirect(url_for("tasks"))
 
-    categories = Category.query.all()
-    return render_template("add_task.html", categories=categories)
+
+
+@app.route("/test_db")
+def test_db():
+    try:
+        task = Task.query.first()
+        if task:
+            return f"Task exists: {task.task_name}"
+        else:
+            return "No tasks found."
+    except Exception as e:
+        return f"Database error: {e}"
+
+
 
 @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
 def update_task(task_id):
@@ -184,12 +222,15 @@ def update_task(task_id):
     categories = Category.query.all()
     return render_template("update_task.html", task=task, categories=categories)
 
+
 @app.route("/delete_task/<int:task_id>")
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
+    flash("Task deleted successfully.", "success")
     return redirect(url_for("tasks"))
+
 
 # Initialize the database and add initial categories if none exist
 with app.app_context():
