@@ -28,6 +28,11 @@ mail = configure_mail(app)
 USERNAME = 'owner'
 PASSWORD = 'pR_%6$?s'
 
+# Load recipes from JSON file
+def load_recipes():
+    with open('taskmanager/static/data/list.json') as f:
+        return json.load(f)
+
 # Define database models
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -56,9 +61,7 @@ def home():
 
 @app.route("/menu")
 def menu():
-    with open('taskmanager/static/data/list.json') as f:
-        recipes = json.load(f)
-
+    recipes = load_recipes()
     # Filter recipes based on category if a category is selected
     category = request.args.get('category', '')
     if category:
@@ -98,26 +101,36 @@ def logout():
     return redirect(url_for("home"))
 
 # Define route for update_menu
-
-@app.route("/update_menu", methods=["GET", "POST"])
+@app.route('/update_menu', methods=['GET', 'POST'])
 def update_menu():
-    if not session.get('logged_in'):
-        flash("You need to be logged in to access this page.", "danger")
-        return redirect(url_for('login'))
+    recipes = load_recipes()  # Load recipes from the JSON file
 
-    # Handle form submissions for adding or deleting recipes
-    if request.method == "POST":
+    if request.method == 'POST':
         if 'add' in request.form:
-            # Add new recipe logic here
-            pass
+            # Add a new recipe
+            new_recipe = {
+                "name": request.form['name'],
+                "description": request.form['description'],
+                "image": request.form['image'],
+                "category": request.form['category']
+            }
+            recipes.append(new_recipe)
+            with open('taskmanager/static/data/list.json', 'w') as f:
+                json.dump(recipes, f, indent=4)
+            flash('Successfully added the recipe!', 'success')
+        
         elif 'delete' in request.form:
-            # Delete recipe logic here
-            pass
-
-    with open('taskmanager/static/data/list.json') as f:
-        recipes = json.load(f)
+            # Delete the selected recipe
+            recipe_name = request.form['recipe_name']
+            recipes = [recipe for recipe in recipes if recipe['name'] != recipe_name]
+            with open('taskmanager/static/data/list.json', 'w') as f:
+                json.dump(recipes, f, indent=4)
+            flash('Successfully deleted the recipe!', 'success')
+        
+        return redirect(url_for('update_menu'))
     
-    return render_template("update_menu.html", list=recipes, page_title="Update Menu")
+    return render_template('update_menu.html', page_title="Update Menu", list=recipes)
+
 
 
 # Define routes for the task manager
@@ -127,10 +140,6 @@ def tasks():
     try:
         tasks = Task.query.all()
         categories = Category.query.all()
-
-        # Debugging prints
-        print(f"Tasks: {tasks}")
-        print(f"Categories: {categories}")
 
         return render_template("tasks.html", tasks=tasks, categories=categories)
     except Exception as e:
@@ -150,9 +159,6 @@ def add_task():
             due_date_str = request.form.get("due_date")
             category_id = request.form.get("category_id")
 
-            # Debug logging
-            print(f"Form Data: task_name={task_name}, task_description={task_description}, is_urgent={is_urgent}, due_date={due_date_str}, category_id={category_id}")
-
             # Check if a task with the same name already exists
             existing_task = Task.query.filter_by(task_name=task_name).first()
             if existing_task:
@@ -163,7 +169,6 @@ def add_task():
             try:
                 due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
             except ValueError as ve:
-                print(f"Date Conversion Error: {ve}")
                 flash("Invalid date format. Please use YYYY-MM-DD.", "danger")
                 return redirect(url_for("add_task"))
 
@@ -178,11 +183,8 @@ def add_task():
         categories = Category.query.all()
         return render_template("add_task.html", categories=categories)
     except Exception as e:
-        # Log the exception and flash an error message
-        print(f"Error in add_task route: {e}")
         flash("An error occurred while adding the task.", "danger")
         return redirect(url_for("tasks"))
-
 
 
 @app.route("/test_db")
@@ -195,7 +197,6 @@ def test_db():
             return "No tasks found."
     except Exception as e:
         return f"Database error: {e}"
-
 
 
 @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
@@ -242,10 +243,7 @@ with app.app_context():
         for category_name in initial_categories:
             db.session.add(Category(category_name=category_name))
         db.session.commit()
-        print("Added initial categories")
-    else:
-        print("Categories already exist")
 
-# Run the app
+
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP", "0.0.0.0"), port=int(os.environ.get("PORT", "5000")), debug=os.environ.get("DEBUG", "True") == "True")
+    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)

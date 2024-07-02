@@ -13,6 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <header>
@@ -94,6 +95,26 @@
       </div>
     </div>
   </div>
+  <script>
+    function confirmDelete(event) {
+        event.preventDefault();
+        const form = event.target;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to delete the recipe?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+  </script>
 
   <footer class="container-fluid text-center">
     <ul id="social-networks">
