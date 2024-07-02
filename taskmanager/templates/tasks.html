@@ -1,36 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Upcoming Tasks</h2>
-    <a href="{{ url_for('add_task') }}">Add Task</a>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                <strong>{{ task.task_name }}</strong> - {{ task.task_description }} - {{ task.due_date }} - {{ task.is_urgent }} - {{ task.category.category_name }}
-                <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
-                <a href="#" onclick="confirmDelete({{ task.id }})">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+<h2>Upcoming Tasks</h2>
+<a href="{{ url_for('add_task') }}">Add Task</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            <strong>{{ task.task_name }}</strong> - {{ task.task_description }} - {{ task.due_date }} - {{ task.is_urgent }} - {{ task.category.category_name }}
+            <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
+            <a href="#" data-task-id="{{ task.id }}" class="delete-link">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
 
-    <!-- Confirmation Modal -->
-    <div id="confirmModal" style="display:none;">
-        <p>Do you really want to delete this task?</p>
-        <button id="confirmYes">Yes</button>
-        <button id="confirmNo">No</button>
-    </div>
+<!-- Confirmation Modal -->
+<div id="confirmModal" style="display:none;">
+    <p>Do you really want to delete this task?</p>
+    <button id="confirmYes">Yes</button>
+    <button id="confirmNo">No</button>
+</div>
 
-    <script>
-        function confirmDelete(taskId) {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'block';
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const deleteLinks = document.querySelectorAll(".delete-link");
+        const modal = document.getElementById('confirmModal');
+        let currentTaskId;
 
-            document.getElementById('confirmYes').onclick = function() {
-                window.location.href = "{{ url_for('delete_task', task_id=0) }}".replace('0', taskId);
-            };
+        deleteLinks.forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                currentTaskId = event.target.getAttribute("data-task-id");
+                modal.style.display = 'block';
+            });
+        });
 
-            document.getElementById('confirmNo').onclick = function() {
-                modal.style.display = 'none';
-            };
-        }
-    </script>
+        document.getElementById('confirmYes').onclick = function() {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = "{{ url_for('delete_task', task_id=0) }}".replace('0', currentTaskId);
+            document.body.appendChild(form);
+            form.submit();
+        };
+
+        document.getElementById('confirmNo').onclick = function() {
+            modal.style.display = 'none';
+        };
+    });
+</script>
 {% endblock %}

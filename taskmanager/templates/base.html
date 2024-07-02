@@ -9,11 +9,9 @@
   <meta name="keywords" content="Bulgarian main courses, Bulgarian starter, Bulgarian soups, Bulgarian salads.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <header>
@@ -101,7 +99,7 @@
         const form = event.target;
         Swal.fire({
             title: 'Are you sure?',
-            text: "Do you really want to delete the recipe?",
+            text: "Do you really want to delete this?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -114,7 +112,7 @@
         });
         return false;
     }
-  </script>
+</script>
 
   <footer class="container-fluid text-center">
     <ul id="social-networks">

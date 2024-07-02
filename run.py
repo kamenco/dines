@@ -103,11 +103,10 @@ def logout():
 # Define route for update_menu
 @app.route('/update_menu', methods=['GET', 'POST'])
 def update_menu():
-    recipes = load_recipes()  # Load recipes from the JSON file
+    recipes = load_recipes()
 
     if request.method == 'POST':
         if 'add' in request.form:
-            # Add a new recipe
             new_recipe = {
                 "name": request.form['name'],
                 "description": request.form['description'],
@@ -120,7 +119,6 @@ def update_menu():
             flash('Successfully added the recipe!', 'success')
         
         elif 'delete' in request.form:
-            # Delete the selected recipe
             recipe_name = request.form['recipe_name']
             recipes = [recipe for recipe in recipes if recipe['name'] != recipe_name]
             with open('taskmanager/static/data/list.json', 'w') as f:
@@ -128,7 +126,7 @@ def update_menu():
             flash('Successfully deleted the recipe!', 'success')
         
         return redirect(url_for('update_menu'))
-    
+
     return render_template('update_menu.html', page_title="Update Menu", list=recipes)
 
 
@@ -224,13 +222,14 @@ def update_task(task_id):
     return render_template("update_task.html", task=task, categories=categories)
 
 
-@app.route("/delete_task/<int:task_id>")
+@app.route("/delete_task/<int:task_id>", methods=['POST'])
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
     flash("Task deleted successfully.", "success")
     return redirect(url_for("tasks"))
+
 
 
 # Initialize the database and add initial categories if none exist
