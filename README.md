@@ -75,11 +75,6 @@ Flow chart to work out the logic path the program needs to take.
 
 ---
 
-This is the logic path of the music section.
-
-![The flow chart!](assets/scheme.png "The illustration")
-
----
 ## [Website Features](#website-features)
 
 - View the menu with various recepies.
@@ -139,14 +134,14 @@ Given more time to invest in the project, I would like to implement some more fe
  ![Javascript validation!](taskmanager/static/images/js_valid1.png "Javascript validation")
 
 ---
+Form submission validation. Form submission using Javascript.
+![Form submission validation!](taskmanager/static/images/email_valid.png "Form submission validation")
 
  Python validation
 
  ![Python validation!](taskmanager/static/images/pyt_valid.png "Python validation")
  
- 
 ---
-
 
 The page is tested on different browsers Chrome, Firefox, Safari, Opera. The page is responsive and contains all the functions accross differenr screens and sizes.
 
