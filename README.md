@@ -1,9 +1,50 @@
-# Varna Eats
+# Varna Eats - Restaurant
 
+## Performance of the web page on different devices
+
+![Responsive on phone!](taskmanager/static/images/responsive.png "Responsive on phone")
 
 [Click on this link to visit the site on Heroku](https://dines-kamen-9b44aac7c04a.herokuapp.com/)
 
+
+# Content
+
+- [Introduction](#introduction)
+    * [User experience](#user-experience)
+    * [My vision for the game](#my-vision-for-the-game)
+    * [Agile planning](#agile-planning)
+- [Features](#features)
+    * [Main](#main)
+    * [Blog](#blog)
+    * [Post details](#post-details)
+    * [Pokemon](#pokemon)
+    * [Socials](#socials)
+    * [Profiles](#profiles)
+    * [Sign in, out and up](#sign-in-sign-out-and-sign-up)
+- [Future features](#future-features)
+- [Design](#design)
+- [Technologies used](#technologies-used)
+    * [Balsemiq](#balsemiq)
+    * [Lucid Flowchart](#lucid-flowchart)
+    * [Bootstrap](#bootstrap)
+    * [ElephantSQL](#elephantsql)
+    * [Cloudinary](#cloudinary)
+    * [Libraries](#libraries)
+- [Testing](#testing)
+- [Bug fixes](#bug-fixes)
+- [Deployment](#deployment)
+    * [Github deployment](#github-deployment)
+    * [Heroku deployment](#heroku-deployment)
+- [Credits](#credits)
+
+<br>
+
+
+## Introduction
+
 Varna Eats is a web application that allows users to view the menu, make reservations, and manage tasks. This project is built using Flask and is deployed on Heroku.
+
+
 
 ## Features
 
@@ -11,26 +52,28 @@ Varna Eats is a web application that allows users to view the menu, make reserva
 - Make reservations through a contact form.
 - Login and manage the menu (add or delete recipes).
 - Task management functionality including adding, updating, and deleting tasks.
+- Send email for reservations
 
 ## Project Structure
 
-|-- run.py
-|-- form_handler.py
-|-- env.py
-|-- requirements.txt
-|-- taskmanager/ 
-| |-- init.py
-| |-- templates/
-| | |-- base.html
-| | |-- index.html
-| | |-- menu.html
-| | |-- contact.html
-| | |-- login.html
-| | |-- update_menu.html
-| | |-- tasks.html
-| | |-- add_task.html
-| | |-- update_task.html
-|-- .env
+
+      |-- run.py
+      |-- form_handler.py
+      |-- env.py
+      |-- requirements.txt
+      |-- taskmanager/ 
+      | |-- init.py
+      | |-- templates/
+      | | |-- base.html
+      | | |-- index.html
+      | | |-- menu.html
+      | | |-- contact.html
+      | | |-- login.html
+      | | |-- update_menu.html
+      | | |-- tasks.html
+      | | |-- add_task.html
+      | | |-- update_task.html
+      |-- .env
 
 
 Clone the repository
