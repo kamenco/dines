@@ -15,12 +15,13 @@
 2. [UX Description](#ux-description)
 3. [Technologies used](#technologies-used)
 4. [Website Features](#website-features)
-5. [Features to implement](#other-features)
-6. [Testing and Validation](#testing-and-validation)
-7. [Bugs and Issues](#bugs-and-issues)
-8. [404 page](#notfound-page)
-9. [Deployment](#deployment)
-10. [Credits](#credits)
+5. [Features to implement](#other-features
+6. [Project structure](#project-structure)
+7. [Testing and Validation](#testing-and-validation)
+8. [Bugs and Issues](#bugs-and-issues)
+9. [404 page](#notfound-page)
+10. [Deployment](#deployment)
+11. [Credits](#credits)
 
 ---
 
@@ -97,10 +98,34 @@ Given more time to invest in the project, I would like to implement some more fe
 - This project can target young children and children and people with Down's syndrom provided I change the melodies with such appropriate for children. A lot more melodies should be used and the streaming of music should go until the player decides to stop. The melodies should be chosen randomly or in order of their appearence. For that definetely must dig deeper into "Java Script for Sound Artists" by William Tutner.
 
  ---
- 
+
+ ## [Project structure](#project-structure)
+
+       |-- run.py
+      |-- form_handler.py
+      |-- env.py
+      |-- requirements.txt
+      |-- taskmanager/ 
+      | |-- init.py
+      | |-- templates/
+      | | |-- base.html
+      | | |-- index.html
+      | | |-- menu.html
+      | | |-- contact.html
+      | | |-- login.html
+      | | |-- update_menu.html
+      | | |-- tasks.html
+      | | |-- add_task.html
+      | | |-- update_task.html
+      |-- .env
+      
+    ---  
+    
  ## [Testing and Validation](#testing-and-validation)
 
  The HTML and CSS coding was tested on https://validator.w3.org
+
+ ![Responsive on phone!](taskmanager/static/images/css_valid.png "Responsive on phone")
 
  HTML validation.
  ---
