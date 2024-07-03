@@ -82,9 +82,11 @@ This is the logic path of the music section.
 ---
 ## [Website Features](#website-features)
 
-This is a simplified game Scissor, Rock, Paper, Lizard, Spock player against computer. Player chooses manually the picture by clicking on it and the computer chooses randomely.  The chosen characters are displayed in words. Then the win and loose is displayed in green and red respetfully, and player's score computer's score are displayed and incremented by one respetfully. 
-
-As far as the homemade music block is concerned the player can choose to listen songs while playing.
+- View the menu with various recepies.
+- Make reservations through a contact form.
+- Login and manage the menu (add, update, delete recipes).
+- Task management functionality including adding, updating, and deleting tasks.
+- Send email for reservations
 
 ---
 
@@ -92,11 +94,12 @@ As far as the homemade music block is concerned the player can choose to listen 
 
 Given more time to invest in the project, I would like to implement some more features: 
 
-- A count-up counter. On reaching a certain number, for example 10, one round will be won. The round counter will be added to count the won and lost rounds. Then all variables will be reset to 0 or blank.
+- The menu page except menues to have prices for each dish with an option for online payment and booking, and also a delivery for home.
   
-- Some basic animation to the pictures can be added to add some nice visual effects to the project. Perhaps the picture can enlarge slightly for the winning player and decrease in size slightly for the losing computer and vice-versa. Or perhaps by adding some wings that will flap cheerefully when win and fall down sadly when lose.
-- This project can target young children and children and people with Down's syndrom provided I change the melodies with such appropriate for children. A lot more melodies should be used and the streaming of music should go until the player decides to stop. The melodies should be chosen randomly or in order of their appearence. For that definetely must dig deeper into "Java Script for Sound Artists" by William Tutner.
-
+- The form from the contact page should have dropdown menu for date and time of the reservation, also dropdaown for the main course, starters, desserts, so that those booking for functions, celebrations, receptions and parties can fix their menu beforehnd online.
+  
+- This project can target restaurant owners and catering services.
+  
  ---
 
  ## [Project structure](#project-structure)
@@ -253,11 +256,7 @@ This side is used with the help of Codeacademy's course Essential JavaScript and
 
 ## Features
 
-- View the menu with various recepies.
-- Make reservations through a contact form.
-- Login and manage the menu (add or delete recipes).
-- Task management functionality including adding, updating, and deleting tasks.
-- Send email for reservations
+
 
 ## Project Structure
 
