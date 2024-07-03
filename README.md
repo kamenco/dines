@@ -15,7 +15,7 @@
 2. [UX Description](#ux-description)
 3. [Technologies used](#technologies-used)
 4. [Website Features](#website-features)
-5. [Features to implement](#other-features
+5. [Features to implement](#other-features)
 6. [Project structure](#project-structure)
 7. [Testing and Validation](#testing-and-validation)
 8. [Bugs and Issues](#bugs-and-issues)
@@ -125,15 +125,25 @@ Given more time to invest in the project, I would like to implement some more fe
 
  The HTML and CSS coding was tested on https://validator.w3.org
 
- ![Responsive on phone!](taskmanager/static/images/css_valid.png "Responsive on phone")
+ ![CSS validation!](taskmanager/static/images/css_valid.png "CSS validation")
 
- HTML validation.
- ---
-![The performance of the web page on w3 validator!](assets/html_check.png "Perform")
+ Javascript validation.
 
-CSS validation.
+ ![Javascript validation!](taskmanager/static/images/js_valid.png "Javascript validation")
+
+ Javascript validation
+
+ ![Javascript validation!](taskmanager/static/images/js_valid1.png "Javascript validation")
+
 ---
-![The performance of the web page on w3 validator!](assets/css_check.png "Perform")
+
+ Python validation
+
+ ![Python validation!](taskmanager/static/images/pyt_valid.png "Python validation")
+ 
+ 
+---
+
 
 The page is tested on different browsers Chrome, Firefox, Safari, Opera. The page is responsive and contains all the functions accross differenr screens and sizes.
 
