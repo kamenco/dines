@@ -168,7 +168,7 @@ This bug was solved by discoverin that in the task.html some rows have been dele
 ![Mailman added requirements!](taskmanager/static/images/mailman_added_requirements.png "Mailman added to requirements.txt")
 This bug was fixed by adding the flask_mailman==0.3.0 to the requirements.txt
 
-![Build error bug!](taskmanager/static/images/build_error.png "Build error bug")
+![Build error bug!](taskmanager/static/images/buid_error.png "Build error bug")
 
 ![Crash!](taskmanager/static/images/crash.png "Site crashes")
 
