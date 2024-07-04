@@ -176,7 +176,8 @@ This bug was fixed by adding the flask_mailman==0.3.0 to the requirements.txt
 Flask applicationurl_for function failed to findthe endpoint. The suggestion Did you mean update_task instead? indicated that update_task is the valid endpoint. There was a typo in the endpoint name.
 
 ![Crash!](taskmanager/static/images/crash.png "Site crashes")
-
+The bug was caused by unresolved dependencies: Dependencies specified in requirements.txt namely Flask-SQLAlchemy was installe at lower version. Flask-SQLAlchemy was upgraded == 3.0.3
+ The version conflicts caused the failure.
 ![CSS bug!](taskmanager/static/images/css_bug.png "CSS bug")
 
 ---
