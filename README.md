@@ -160,13 +160,17 @@ Lighthouse runs an audit of your website and feeds back a set of scores for acce
 ---
 ## [Bugs and Issues](#bugs-and-issues)
 
-There is an issue with Iphone 13 and iPhone13. The music block is not fully visible. Probably vh for the .btn has to be declared at vh50 which will scale the buttons to 50%. This issue has not been resolved. There is another issue, there is scriool bar on the small portable devices. This is due to the table layout. If there is no table the issue is resolved.
+![Task undefined issue!](taskmanager/static/images/task_undefined.png "Task undefined bug")
 
-![The issue with iPhone 12, 13!](assets/bug_phone.png "An issue.")
+![template not found!](taskmanager/static/images/templ_not_found.png "Template not found bug")
 
-However the programe performs very well on all the rest devices such as iPhone14, pixel7,Samsung Galaxy S8+, Samung Glaxy S20 Ultra.
+![Mailman added requirements!](taskmanager/static/images/mailman_added_requirements.png "Mailman added to requirements.txt")
 
-![Thereis no issue with all the rest phones and devices!](assets/iphone.png.png "No issue.")
+![Build error bug!](taskmanager/static/images/build_error.png "Build error bug")
+
+![Crash!](taskmanager/static/images/crash.png "Site crashes")
+
+![CSS bug!](taskmanager/static/images/css_bug.png "CSS bug")
 
 ---
 
