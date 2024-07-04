@@ -165,7 +165,7 @@ This bug was solved by discoverin that in the task.html some rows have been dele
 
 ![template not found!](taskmanager/static/images/templ_not_found.png "Template not found bug")
 
-![Mailman added requirements!](taskmanager/static/images/mailman_added_requirements.png "Mailman added to requirements.txt")
+![Mailman added requirements!](taskmanager/static/images/mailman.png "Mailman added to requirements.txt")
 This bug was fixed by adding the flask_mailman==0.3.0 to the requirements.txt
 
 ![Build error bug!](taskmanager/static/images/buid_error.png "Build error bug")
