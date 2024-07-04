@@ -184,84 +184,69 @@ The bug was caused by unresolved dependencies: Dependencies specified in require
 
 ## [404.html](#notfound-page)
 
-404.html page was created and shows that the browser connects to the server but can not find the page.
- - This happens rarely but sometimes the server malfunctions.
- - This happens when the URL is not valid anymore and the file is missing.
- - The page opening is triggerd by the file ".htaccess" located in the root directory. This files serves the purpose of passing on instructions to the server to open the page with code line ErrorDocument 404 /404.html
+
+   @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
+def update_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if request.method == "POST":
+        task.task_name = request.form.get("task_name")
+        task.task_description = request.form.get("task_description")
+        task.is_urgent = True if request.form.get("is_urgent") else False
+        due_date_str = request.form.get("due_date")
+        
+   task = Task.query.get_or_404(task_id)
+   
+This line attempts to fetch a Task object from the database using the task_id. If the task_id does not exist in the database, Flask will automatically return a 404 Not Found error.
+If we have a task with task_id=1 in database. When visiting /update_task/1, the application should work correctly. However, if you visit /update_task/100 and there is no task with task_id=100, the Task.query.get_or_404(100) will trigger a 404 response.
 
  - ---
 
 ## [Deployment](#deployment)
 
-+ The site was deployed to GitHub pages. The steps to deploy are as follows.
-  - In the Git Hub repositorynavigate to the settings tab.
-  - From the source section dropdown menu select Master Branch.
-  - Once the master branch has been selected, the page provides the link to the live site.
+Heroku deployment
+To deploy Your App to Heroku, you have to :
+
++ Create a Heroku account.
++ From the dashboard select create new app.
++ Enter a name for your app, it needs to be unique, and select your region then press create app.
++ Select settings at the top of your app page.
++ Press reveal config vars.
++ Also add PORT in key input and 8000 as value input.
++ Scroll down and press the add buildpack button.
++ Scroll back up and select Deploy at the top of your app page.
++ Choose your deployment method, when choosing Github, you will have to connect to your account.
++ Then choose which repo you want to deploy and connect to it.
++ Choose if you want to deploy automatic or manual, and press deploy.
+
+
+**To fork this repository on Github, you have to:**
+
++ Go to my GitHub repository.
++ In the top-right corner of the page, click Fork.
++ Under "Owner," select the dropdown menu and click an owner for the forked repository.
++ Click Create fork.
+
+**To clone this repository, you have to:**
+
++ Go to my GitHub repository.
++ Above the list of files, click Code.
++ Copy the URL for the repository.
++ Open Git Bash.
++ Change the current working directory to the location where you want the cloned directory.
++ Type git clone, and then paste the URL you copied earlier.
++ Press Enter to create your local clone.
 
 ---
 
 ## [Credits](#credits)
-The music and singing is performed by the developer of this site. The favicons were taken from https://favicon.io/. and namely from the favicon generator. The icons for the project were taken from https://www.klipartz.com/. Before starting the project I was looking for something that will give me the idea of how to implement JavaScript in the best possible way. I ended up not complicating the code as I wanted to stay to the basics of what I have covered so far.
- - The video I used as reference was from Bro code you tube channel. https://youtu.be/n1_vHArDBRA
- - I have added two more characters lizard and spock and changed the Java Script code respetively using the or sign to check for additional charachter. I have also added the reset button and also the 404.html page whith alink to bring back the user to the main page.
 
+ The idea for the bootstrap design was taken from https://www.w3schools.com/.
+ This site was build with the help of www.chatgpt.com
+ Pictures recepies and links for the pictures were taken from www.bgtown.com
 
-The idea for the game was accepted from you tube and I have improved the code by adding two more items Spock and Lizard. The flow control was improved as to the terniary condition was added the OR operator.
+The idea for the site was accepted from the Code Institute reccomendation for project 4. 
 
-The idea for the music block was taken from you tube channel Web Dev Made Easy https://youtu.be/E-v4SSCG6i4
-and also from the book "Java Script for Sound Artists" by William Tutner.
-
-This side is used with the help of Codeacademy's course Essential JavaScript and the help of the tutors and facilitators, and mentors. Thanks to facilitator Laura for sending me useful links for React, thanks to Mr. Medale and Marco for the technical support.
+This side is used with the help of Codeacademy's course and the help of the tutors and facilitators, and mentors. Thanks to facilitator Laura for sending me useful links for testing, thanks to my tutor Mr. Medale.
 
 [Back to top](#wireframe)
 
-Clone the repository
-
-
-## Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/varna-eats.git
-   cd varna-eats
-Create a virtual environment
-
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
- Install dependancies
-
- pip install -r requirements.txt
-
-Set up environment variables, create an env.py file
-FLASK_APP=run.py
-FLASK_ENV=development
-SECRET_KEY=your_secret_key
-SQLALCHEMY_DATABASE_URI=sqlite:///taskmanager.db
-MAIL_USERNAME=your_email@example.com
-MAIL_PASSWORD=your_email_password
-
-
-Initialize the database
-
-flask db init
-flask db migrate -m "Initial migration."
-flask db upgrade
-
-
-
-# Bug fixes
-
-Check if task with the same name already exists. If it exists the program crashes. 
-
-
-![The integrity error!](taskmanager/static/images/unique_name_error.png "The integrity error")
-
-
-
-The bug was solved with adding the code check if a task with the same name already exists
-        
-        
-        existing_task = Task.query.filter_by(task_name=task_name).first()
-        if existing_task:
-            flash("A task with that name already exists. Please choose a different name.", "danger")
-            return redirect(url_for("add_task"))
