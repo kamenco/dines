@@ -164,11 +164,16 @@ Lighthouse runs an audit of your website and feeds back a set of scores for acce
 This bug was solved by discoverin that in the task.html some rows have been deleted.
 
 ![template not found!](taskmanager/static/images/templ_not_found.png "Template not found bug")
+This error was cause because Flask was not configured to look in the right place. 
+
+     app = Flask(__name__, template_folder='templates')
+
 
 ![Mailman added requirements!](taskmanager/static/images/mailman.png "Mailman added to requirements.txt")
 This bug was fixed by adding the flask_mailman==0.3.0 to the requirements.txt
 
 ![Build error bug!](taskmanager/static/images/buid_error.png "Build error bug")
+Flask applicationurl_for function failed to findthe endpoint. The suggestion Did you mean update_task instead? indicated that update_task is the valid endpoint. There was a typo in the endpoint name.
 
 ![Crash!](taskmanager/static/images/crash.png "Site crashes")
 
