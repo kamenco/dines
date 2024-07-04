@@ -69,7 +69,7 @@ The delete_task, add_task, update_task routes are used to correctly handle POST 
 git add . git commit and git push commands were used.
 - Gitpod.io was used to work on the project.
 - Heroku was used to deploy my site.
-- 
+  
 ---
 
 ## [Website Features](#website-features)
@@ -164,20 +164,25 @@ Lighthouse runs an audit of your website and feeds back a set of scores for acce
 This bug was solved by discoverin that in the task.html some rows have been deleted.
 
 ![template not found!](taskmanager/static/images/templ_not_found.png "Template not found bug")
+
 This error was cause because Flask was not configured to look in the right place. 
 
      app = Flask(__name__, template_folder='templates')
 
 
 ![Mailman added requirements!](taskmanager/static/images/mailman.png "Mailman added to requirements.txt")
+
 This bug was fixed by adding the flask_mailman==0.3.0 to the requirements.txt
 
 ![Build error bug!](taskmanager/static/images/buid_error.png "Build error bug")
-Flask applicationurl_for function failed to findthe endpoint. The suggestion Did you mean update_task instead? indicated that update_task is the valid endpoint. There was a typo in the endpoint name.
+
+Flask application url_for function failed to find the endpoint. The suggestion Did you mean update_task instead? indicated that update_task is the valid endpoint. There was a typo in the endpoint name.
 
 ![Crash!](taskmanager/static/images/crash.png "Site crashes")
+
 The bug was caused by unresolved dependencies: Dependencies specified in requirements.txt namely Flask-SQLAlchemy was installe at lower version. Flask-SQLAlchemy was upgraded == 3.0.3
  The version conflicts caused the failure.
+ 
 ![CSS bug!](taskmanager/static/images/css_bug.png "CSS bug")
 
 ---
@@ -185,16 +190,18 @@ The bug was caused by unresolved dependencies: Dependencies specified in require
 ## [404.html](#notfound-page)
 
 
-   @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
-def update_task(task_id):
-    task = Task.query.get_or_404(task_id)
-    if request.method == "POST":
+      @app.route("/update_task/<int:task_id>", methods=["GET", "POST"])
+      def update_task(task_id):
+        task = Task.query.get_or_404(task_id)
+        if request.method == "POST":
         task.task_name = request.form.get("task_name")
         task.task_description = request.form.get("task_description")
         task.is_urgent = True if request.form.get("is_urgent") else False
         due_date_str = request.form.get("due_date")
+
+
         
-   task = Task.query.get_or_404(task_id)
+       task = Task.query.get_or_404(task_id)
    
 This line attempts to fetch a Task object from the database using the task_id. If the task_id does not exist in the database, Flask will automatically return a 404 Not Found error.
 If we have a task with task_id=1 in database. When visiting /update_task/1, the application should work correctly. However, if you visit /update_task/100 and there is no task with task_id=100, the Task.query.get_or_404(100) will trigger a 404 response.
@@ -243,6 +250,8 @@ To deploy Your App to Heroku, you have to :
  The idea for the bootstrap design was taken from https://www.w3schools.com/.
  This site was build with the help of www.chatgpt.com
  Pictures recepies and links for the pictures were taken from www.bgtown.com
+ Some of the styling was made with the help of www.bootstrap.com
+ The chef's logo was taken free from https://logo.com/
 
 The idea for the site was accepted from the Code Institute reccomendation for project 4. 
 
