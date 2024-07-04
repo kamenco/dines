@@ -15,7 +15,7 @@
 2. [UX Description](#ux-description)
 3. [Technologies used](#technologies-used)
 4. [Website Features](#website-features)
-5. [Features to implement](#other-features
+5. [Features to implement](#other-features)
 6. [Agile palnning](#agile-planning)
 7. [Project structure](#project-structure)
 8. [Testing and Validation](#testing-and-validation)
@@ -61,14 +61,15 @@ The layout is kept pretty simple, with three pages describing the Bulgarian cuis
 The delete_task, add_task, update_task routes are used to correctly handle POST requests to delete, update and add a task and redirect back to the tasks list. Used url_for function to correctly points to the Flask routes. Delete_task, update-task, and add_task routes accept the correct HTTP methods (GET, POST). Ensured Unique URLs for Delete Actions. Making sure the URLs for the delete actions in both update_menu.html and update_task.html are distinct. Handling POST Requests: The update_menu function is updated to load recipes at the beginning. If the request is a POST request and the form contains 'add', it adds the new recipe. If the form contains 'delete', it deletes the selected recipe and writes the updated list back to list.json.
 
 - Github - The cloud based service for hosting repositories for over 73 million developers
-- Git - Used to add, commit and push my changes to the server.
+- Git - Used to add, commit and push my changes to the server and to create a repository with the help of The Code Institute template.
 - Favicon.io - Used to source my favicon icons for my website.
 - Google Fonts - Used to source different fonts in my css file. Google font were used Roboto.
 - CoralDraw was used to illustrate this page with the flow chart's logic.
 - This page was made with Visual Studio Code on gitpod.io, and for deploying the pages the 
 git add . git commit and git push commands were used.
-  
-
+- Gitpod.io was used to work on the project.
+- Heroku was used to deploy my site.
+- 
 ---
 
 ## [Website Features](#website-features)
@@ -138,8 +139,8 @@ Several development cycles were followed **1st cycle iteration** creating the HT
 
 ---
 Form submission validation. Form submission using Javascript.
-![Form submission validation!](taskmanager/static/images/email_valid.png "Form submission validation")
 
+![Email successfully submitted!](taskmanager/static/images/email_valid.png "Email successfully submitted!")
 Validation from emaijs.com
 
 ![Form submission validation!](taskmanager/static/images/form_test.png "Form submission validation")
@@ -155,10 +156,6 @@ The page is tested on different browsers Chrome, Firefox, Safari, Opera. The pag
 The javascript files have been checked on www.jshint.com. There are no issues. Probably have to improve the identation so that the code to look better.
 
 **JavaScript validation.**
-
----
-
-![The performance of the web page on jshint for Javascript on the game!](assets/jshint.png "Perform")
 
 ---
 
@@ -218,72 +215,8 @@ This side is used with the help of Codeacademy's course Essential JavaScript and
 
 [Back to top](#wireframe)
 
-
-- [Introduction](#introduction)
-    * [User experience](#user-experience)
-    * [My vision for the game](#my-vision-for-the-game)
-    * [Agile planning](#agile-planning)
-- [Features](#features)
-    * [Main](#main)
-    * [Blog](#blog)
-    * [Post details](#post-details)
-    * [Pokemon](#pokemon)
-    * [Socials](#socials)
-    * [Profiles](#profiles)
-    * [Sign in, out and up](#sign-in-sign-out-and-sign-up)
-- [Future features](#future-features)
-- [Design](#design)
-- [Technologies used](#technologies-used)
-    * [Balsemiq](#balsemiq)
-    * [Lucid Flowchart](#lucid-flowchart)
-    * [Bootstrap](#bootstrap)
-    * [ElephantSQL](#elephantsql)
-    * [Cloudinary](#cloudinary)
-    * [Libraries](#libraries)
-- [Testing](#testing)
-- [Bug fixes](#bug-fixes)
-- [Deployment](#deployment)
-    * [Github deployment](#github-deployment)
-    * [Heroku deployment](#heroku-deployment)
-- [Credits](#credits)
-
-<br>
-
-
-## Introduction
-
-
-
-
-
-## Features
-
-
-
-## Project Structure
-
-
-      |-- run.py
-      |-- form_handler.py
-      |-- env.py
-      |-- requirements.txt
-      |-- taskmanager/ 
-      | |-- init.py
-      | |-- templates/
-      | | |-- base.html
-      | | |-- index.html
-      | | |-- menu.html
-      | | |-- contact.html
-      | | |-- login.html
-      | | |-- update_menu.html
-      | | |-- tasks.html
-      | | |-- add_task.html
-      | | |-- update_task.html
-      |-- .env
-
-
 Clone the repository
-![Email successfully submitted!](taskmanager/static/images/email_valid.png "Email successfully submitted!")
+
 
 ## Installation
 
