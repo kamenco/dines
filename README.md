@@ -129,7 +129,7 @@ Several development cycles were followed **1st cycle iteration** creating the HT
 
  ![CSS validation!](taskmanager/static/images/css_valid.png "CSS validation")
 
- Javascript validation.
+ Javascript validation. The javascript files have been checked on www.jshint.com. 
 
  ![Javascript validation!](taskmanager/static/images/js_valid.png "Javascript validation")
 
@@ -151,23 +151,11 @@ Validation from emaijs.com
  
 ---
 
-The page is tested on different browsers Chrome, Firefox, Safari, Opera. The page is responsive and contains all the functions accross differenr screens and sizes.
+The page is tested on different browsers Chrome, Firefox, Safari, Opera. The page is responsive and contains all the functions accross differenr screens and sizes. The accessibility testing.
+For testing accesibility and SEO and Best Practices, I used Lighthouse in Dev tools. 
+Lighthouse runs an audit of your website and feeds back a set of scores for accessibility, SEO and best practices among others.
 
-The javascript files have been checked on www.jshint.com. There are no issues. Probably have to improve the identation so that the code to look better.
-
-**JavaScript validation.**
-
----
-
-![The performance of the web page on jshint JavaScript for the music section. !](assets/jshint_2.png "Perform")
-
-The accessibility testing.
-For testing accesibility and performance, I used Lighthouse in Dev tools. 
-Lighthouse runs an audit of your website and feeds back a set of scores for accessibility, performance and best practices among others. 
-
-I can confirm that the website passed with great scores. See report below:
-
-![The performance of the web page on Google chrom!](assets/perform.png "Perform")
+![Checked on lighthouse!](taskmanager/static/images/performance.png "Python validation")
 
 ---
 ## [Bugs and Issues](#bugs-and-issues)
