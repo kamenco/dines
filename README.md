@@ -15,13 +15,14 @@
 2. [UX Description](#ux-description)
 3. [Technologies used](#technologies-used)
 4. [Website Features](#website-features)
-5. [Features to implement](#other-features)
-6. [Project structure](#project-structure)
-7. [Testing and Validation](#testing-and-validation)
-8. [Bugs and Issues](#bugs-and-issues)
-9. [404 page](#notfound-page)
-10. [Deployment](#deployment)
-11. [Credits](#credits)
+5. [Features to implement](#other-features
+6. [Agile palnning](#agile-planning)
+7. [Project structure](#project-structure)
+8. [Testing and Validation](#testing-and-validation)
+9. [Bugs and Issues](#bugs-and-issues)
+10. [404 page](#notfound-page)
+11. [Deployment](#deployment)
+12. [Credits](#credits)
 
 ---
 
@@ -64,14 +65,9 @@ The delete_task, add_task, update_task routes are used to correctly handle POST 
 - Favicon.io - Used to source my favicon icons for my website.
 - Google Fonts - Used to source different fonts in my css file. Google font were used Roboto.
 - CoralDraw was used to illustrate this page with the flow chart's logic.
-- This page was made with Visual Studio Code. Visual Studio Code was used from gitpod.com. Also the Git Hub repository has been cloned to the desktop of my computer by logging to the Git Hub repository, click on clone and download, paste the HTTP addres in the terminal. Then open the folder spock on my desktop with Visual Studio Code and start working adding, comitting and pushing the changes that have been made. In code terms I type git clone and then paste the url copied from the Git repository then the cloning begins by pressing enter. Then in the terminal I changed the current folder with
-     cd "C:\Users\kamen\OneDrive\Desktop". The spock folder appears on my desktop and in there using Visual Studio Code start working on the project and saving it by
-     git add . git commit and git push.
-  - The music section is realized with Java Script forEach function that iterates trough the array of songs, creates buttons with song's name in it. With  onclick event listener plays and stops the songs. A function startSong() is called from within the body of the forEach function.
- 
-Flow chart to work out the logic path the program needs to take.
-
-![The flow chart!](assets/play.png "The illustration")
+- This page was made with Visual Studio Code on gitpod.io, and for deploying the pages the 
+git add . git commit and git push commands were used.
+  
 
 ---
 
@@ -92,10 +88,17 @@ Given more time to invest in the project, I would like to implement some more fe
 - The menu page except menues to have prices for each dish with an option for online payment and booking, and also a delivery for home.
   
 - The form from the contact page should have dropdown menu for date and time of the reservation, also dropdaown for the main course, starters, desserts, so that those booking for functions, celebrations, receptions and parties can fix their menu beforehnd online.
-  
+- To fulfil authomatic testing. For now only manual testing is carried out.  
 - This project can target restaurant owners and catering services.
   
  ---
+ 
+## [Agile planning](#agile-planning)
+
+Severel steps were taken into consideration to develop this project. **Requirements** were detailed, **analyses** performed to see what technologies might be used, the **design** was made using bootstrap and CSS combined the **development** was carried out on gitpod.io, **testing** was made only manually, the authomatic testing was abondened due to lack of time. **User stories** were found regarding the usage of the contact submit form, for phones, which are widely used for internet it is difficult, or almost impossible to put the phone numbers with hifens.
+Several development cycles were followed **1st cycle iteration** creating the HTML and CSS structure. **2nd cycle iteration** implementing Jinja template language and Flask. **3rd cycle iteration** creating the JSON database for the menues. **4th cycle iteration** Creating SQLLite database with models for categories and tasks. **5th cycle iteration** Creating the contact page with the submit form. Pure python project was abandoned as too complex and unfeasible, in terms of user and password requirements. Implemented the technology ofEmailjs.com for the form submission.
+
+---
 
  ## [Project structure](#project-structure)
 
@@ -136,6 +139,10 @@ Given more time to invest in the project, I would like to implement some more fe
 ---
 Form submission validation. Form submission using Javascript.
 ![Form submission validation!](taskmanager/static/images/email_valid.png "Form submission validation")
+
+Validation from emaijs.com
+
+![Form submission validation!](taskmanager/static/images/form_test.png "Form submission validation")
 
  Python validation
 
