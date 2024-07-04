@@ -250,15 +250,20 @@ To deploy Your App to Heroku, you have to :
 ## [Credits](#credits)
 
  The idea for the bootstrap design was taken from https://www.w3schools.com/.
- This site was build with the help of www.chatgpt.com, but most important with the lectures of codeinstitute.net and namly the lectures for emailjs.com and the task application.
+ 
+ This site was build with the help of www.chatgpt.com, but most important with the lectures of www.codeinstitute.net and namly the lectures for emailjs.com and the task application.
+ 
  Pictures recepies and links for the pictures were taken from www.bgtown.com
+ 
  Some of the styling was made with the help of www.bootstrap.com 
+ 
  The chef's logo was taken free from https://logo.com/
- The photos were taken from pexels.com
-
+ 
+ The photos were taken from www.pexels.com
+ 
 The idea for the site was accepted from the Code Institute reccomendation for project 4. 
 
-This side is used with the help of Codeacademy's course and the help of the tutors and facilitators, and mentors. Thanks to facilitator Laura for sending me useful links for testing, thanks to my tutor Mr. Medale.
+This side is used with the help of Codeacademy's course and the help of the tutors and facilitators, and mentors. Special thanks to facilitator Laura for sending me useful links for testing, thanks to my tutor Mr. Medale.
 
 [Back to top](#wireframe)
 
